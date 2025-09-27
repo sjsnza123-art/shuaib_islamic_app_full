@@ -1,4 +1,4 @@
-name: Flutter CI
+name: Flutter CI & Build
 
 on:
   push:
@@ -21,10 +21,10 @@ jobs:
       - name: Install Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.16.9'   # یہاں وہ ورژن ڈالیں جو آپ use کر رہے ہیں
+          flutter-version: '3.16.9'   # اپنا version یہاں لکھیں
           channel: 'stable'
 
-      # Step 3: Check Flutter version
+      # Step 3: Verify Flutter version
       - name: Flutter Version
         run: flutter --version
 
@@ -32,10 +32,22 @@ jobs:
       - name: Install Dependencies
         run: flutter pub get
 
-      # Step 5: Run analyzer (optional but recommended)
+      # Step 5: Run analyzer
       - name: Run Flutter Analyze
         run: flutter analyze
 
-      # Step 6: Run tests
+      # Step 6: Run tests (skip if no test files)
       - name: Run Flutter Tests
+        if: ${{ hashFiles('test/**') != '' }}
         run: flutter test
+
+      # Step 7: Build APK (release mode)
+      - name: Build APK
+        run: flutter build apk --release
+
+      # Step 8: Upload APK as artifact
+      - name: Upload APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: app-release-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
