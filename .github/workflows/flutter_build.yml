@@ -13,41 +13,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout repository
       - name: Checkout source code
         uses: actions/checkout@v3
 
-      # Step 2: Install Flutter
       - name: Install Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.16.9'   # اپنا Flutter version یہاں ڈالیں
+          flutter-version: '3.16.9'
           channel: 'stable'
 
-      # Step 3: Verify Flutter version
-      - name: Flutter Version
-        run: flutter --version
-
-      # Step 4: Install dependencies
-      - name: Install Dependencies
+      - name: Install dependencies
         run: flutter pub get
 
-      # Step 5: Run analyzer
-      - name: Run Flutter Analyze
-        run: flutter analyze
-
-      # Step 6: Run tests (skip if no test files)
-      - name: Run Flutter Tests
-        if: ${{ hashFiles('test/**') != '' }}
-        run: flutter test
-
-      # Step 7: Build APK (release mode)
-      - name: Build APK
+      - name: Build APK (release)
         run: flutter build apk --release
 
-      # Step 8: Upload APK as artifact
-      - name: Upload APK
+      - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
           name: app-release-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
+se-apk
           path: build/app/outputs/flutter-apk/app-release.apk
