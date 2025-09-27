@@ -21,7 +21,7 @@ jobs:
       - name: Install Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.16.9'   # اپنا version یہاں لکھیں
+          flutter-version: '3.16.9'   # اپنا Flutter version یہاں ڈالیں
           channel: 'stable'
 
       # Step 3: Verify Flutter version
@@ -47,7 +47,10 @@ jobs:
 
       # Step 8: Upload APK as artifact
       - name: Upload APK
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
+          name: app-release-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
+
           name: app-release-apk
           path: build/app/outputs/flutter-apk/app-release.apk
