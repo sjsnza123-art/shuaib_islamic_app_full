@@ -19,7 +19,7 @@ jobs:
       - name: Install Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '1.5.4-hotfix.2'
+          flutter-version: '3.16.9'
           channel: 'stable'
 
       - name: Install Dependencies
