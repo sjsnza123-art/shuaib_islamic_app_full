@@ -1,6 +1,6 @@
-package com.yourcompany.yourapp;
+package com.example.shuaib_islamic_app
 
-import io.flutter.embedding.android.FlutterActivity;
+import io.flutter.embedding.android.FlutterActivity
 
-public class MainActivity extends FlutterActivity {
+class MainActivity: FlutterActivity() {
 }
