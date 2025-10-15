@@ -8,39 +8,38 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'آپ کا ایپ کا نام',
+      title: 'Shuaib Islamic App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        fontFamily: 'UrduFont', // اگر اردو فونٹ استعمال کر رہے ہیں
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: HomeScreen(), // آپ کا اپنا ہوم پیج
-      debugShowCheckedModeBanner: false, // ڈیبگ بینر ہٹائیں
+      home: MyHomePage(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
 
-class HomeScreen extends StatelessWidget {
+class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('آپ کا ایپ'),
-        centerTitle: true,
+        title: Text('Shuaib Islamic App'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: <Widget>[
             Text(
-              'خوش آمدید',
+              'Welcome to Islamic App',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                // آپ کا فنکشنلٹی
+                // Add your functionality here
               },
-              child: Text('شروع کریں'),
+              child: Text('Get Started'),
             ),
           ],
         ),
